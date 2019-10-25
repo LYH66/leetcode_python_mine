@@ -19,6 +19,32 @@ class Solution:
                 if nums[i] + nums[j] == target:
                     return [i, j]
 
+"""
+1. 用字典模拟哈希求解
+2. 字典的索引效率远高于列表
+"""
+
 # method_2
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hashmap = dict()
+        for index,value in enumerate(nums):
+            sub = target - value
+            if sub in hashmap:
+                return [hashmap[sub],index]
+            else:
+                hashmap[value] = index
+
+#method_3
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hashmap = dict()
+        for x in range(len(nums)):
+            y = target - nums[x]
+            if nums[x] in hashmap:
+                return [hashmap[nums[x]], x]
+            else:
+                hashmap[y] = x
 
 
+                
