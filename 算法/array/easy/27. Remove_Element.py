@@ -66,3 +66,11 @@ class Solution:
                 nums[length] = nums[j]
                 length += 1
         return length
+
+#method_4   内置函数remove()
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        while (val in nums):
+            nums.remove(val)
+        return len(nums)
+  
