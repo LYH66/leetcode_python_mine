@@ -27,9 +27,7 @@ class Solution:
         if n == 0:
             return 0
         for index in range(n):
-            if nums[index] == target:
-                return index
-            elif nums[index] > target:
+            if nums[index] >= target:
                 return index
         return n
 
@@ -41,7 +39,6 @@ class Solution:
             return 0
         low = 0
         high = n - 1
-        
         while low <= high:
             mid = (low + high) // 2
             if target == nums[mid]:
