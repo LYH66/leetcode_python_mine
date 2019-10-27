@@ -71,3 +71,12 @@ class Solution:
             nums.append(target)
             nums = sorted(nums)
             return nums.index(target)
+
+#method_5   神解法
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        return len([arg for arg in nums if arg < target])
+#method_6
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        return nums.index(target) if target in nums else sorted([*nums, target]).index(target)
