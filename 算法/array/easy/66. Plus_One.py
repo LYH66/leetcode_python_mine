@@ -17,7 +17,7 @@ Output: [4,3,2,2]
 Explanation: The array represents the integer 4321.
 """
 
-#method_1    一般解法(最快36ms)：比较运算符中‘>’、‘<’执行效率优于‘==’     时空复杂度：O(n/2), O(1)
+#method_1    一般解法（最快36ms）：比较运算符中‘>’、‘<’执行效率优于‘==’     时空复杂度：O(n/2), O(1)
 class Solution:
     def plusOne(self, digits: List[int]) -> List[int]:
         i = len(digits) - 1
@@ -40,4 +40,18 @@ class Solution:
                return digits
        digits.insert(0, 1)
        return digits
+ 
+#method_3    利用字符串和列表之间的转换（36ms）    时空复杂度：O(n), O(n)
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        sums = 0
+        for i in range(len(digits)):
+            sums += 10**(len(digits)-1-i)*digits[i]
+        sums_str = str(sums + 1)
+        return [int(j) for j in sums_str]
+
+#method_4    利用字符串和列表之间的转换（40ms），最简洁（一行代码）      时空复杂度：O(n), O(n)
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        return [int(j) for j in str(int(''.join('%s' %i for i in digits))+1)]
   
