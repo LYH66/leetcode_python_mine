@@ -20,7 +20,7 @@ class Solution:
         elem_appear_times = {}
         
         for i in nums:
-            if i in elem_appear_times.keys():     # elem_appear_times.has_key()
+            if i in elem_appear_times.keys():     # elem_appear_times.get(i)
                 elem_appear_times[i] += 1
             else:
                 elem_appear_times[i] = 1
@@ -29,20 +29,20 @@ class Solution:
         
         return maj_elem
 
-# method_2    通用求法，但由于利用list内置函数count()，需要多次遍历list，时间复杂度较高（312ms）
+# method_2    通用求法，但由于利用list内置函数count()计数，需要多次遍历list，时间复杂度较高（312ms）
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
         return  max([(nums.count(i),i) for i in set(nums)], key=lambda x: x[0])[1]
 
 
 
-
-# method_3    针对题述特定条件求众数（196ms）
+# method_3    排序，针对题述特定条件求众数（196ms）
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
         #return sorted(nums)[(len(nums)//2)]
         nums.sort()
         return nums[int(len(nums)/2)]
+    
 # method_4    Boyer-Moore 投票算法, 针对题述的特定条件（212ms）
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
@@ -53,7 +53,6 @@ class Solution:
             if count == 0:
                 candidate = num
             count += (1 if num == candidate else -1)
-
-        return candidate
+        return candidate        # 众数数量大于所有其他元素，最后一定是众数
 
 
