@@ -23,16 +23,15 @@ class Solution:
         l = len(flowerbed)
         if l < 2: 
             return n == 0 or flowerbed[0] == 0 == n-1 # 特殊情况判定，花圃数组不为空
-        n_flow = 0
         count = 1
         for i in range(1, l):
             if flowerbed[i-1] == flowerbed[i]:
                 count += 1
             else:
-                n_flow += (count // 2)
+                n -= (count // 2)
                 count = 0
-        n_flow += (count+1) // 2
-        return n_flow >= n
+        n -= (count+1) // 2
+        return n <= 0
 
 # method_2    利用python列表可拼接的特性，扩展列表，将首尾特殊情况一般化（99%）
 class Solution:
@@ -40,15 +39,15 @@ class Solution:
         if n == 0:
             return True
         flowerbed = [0] + flowerbed + [0]
-        n_flow = count = 0
+        count = 0
         for i in range(1, len(flowerbed)):
             if flowerbed[i-1] == flowerbed[i]:
                 count += 1
             else:
-                n_flow += (count // 2)
+                n -= (count // 2)
                 count = 0
-        n_flow += count // 2
-        return n_flow >= n
+        n -= count // 2
+        return n <= 0
 
 # method_3    抽取可种花地的模式作为判断条件——连续三个零即可种花（90%）
 class Solution:
