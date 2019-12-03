@@ -32,3 +32,12 @@ class Solution:
             else:
                 index += 2
         return index == n-1
+
+# method_2      （100%）
+class Solution:
+    def isOneBitCharacter(self, bits: List[int]) -> bool:
+        n = len(bits)
+        for i in range(n-2, -1, -1):
+            if bits[i] == 0:
+                return (n-i-2) % 2 == 0
+        return (n-1) % 2 == 0
