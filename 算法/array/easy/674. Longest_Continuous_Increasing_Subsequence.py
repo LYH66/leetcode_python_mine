@@ -13,7 +13,7 @@ Explanation: The longest continuous increasing subsequence is [2], its length is
 Note: Length of the array will not exceed 10,000.
 """
 
-# method_1    一次循环（100%）  O(n), O(1)
+# method_1    一次循环，动态规划（100%）  O(n), O(1)
 class Solution:
     def findLengthOfLCIS(self, nums: List[int]) -> int:
         n = len(nums)
