@@ -47,3 +47,17 @@ class Solution:
             title = chr(65 + r[1]) + title
         return title
 
+    
+# method_3
+class Solution:
+    def convertToTitle(self, n: int) -> str:
+        count,res=1,''
+        while n>0:
+            if n%(26**count)==0:
+                res+='Z'
+                n-=26**count
+            else:
+                res+=chr(int(n%(26**count)/26**(count-1))+64)
+                n-=(n%(26**count))
+            count+=1
+        return res[::-1]
